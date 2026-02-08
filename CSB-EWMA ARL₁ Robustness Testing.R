@@ -1,6 +1,5 @@
 # CSB-EWMA ARL₁ Robustness Testing - Multiple Distributions
 # Testing performance across different data-generating processes
-# Modified to produce exact format outputs
 
 library(parallel)
 library(doParallel)
@@ -21,7 +20,7 @@ delta_vec <- c(0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50)
 p0 <- 0.5  # In-control proportion
 k <- 10    # Number of streams
 
-# Define your optimal parameter combinations (matching the image structure)
+# Define optimal parameter combinations (See https://arxiv.org/pdf/2601.09968)
 optimal_combinations <- data.frame(
   lambda = c(0.175, 0.2, 0.35, 0.4, 0.55, 0.65, 0.725, 0.8, 0.9,
              0.15, 0.2, 0.3, 0.45, 0.525, 0.65, 0.7, 0.85, 0.925),
@@ -32,7 +31,7 @@ optimal_combinations <- data.frame(
   stringsAsFactors = FALSE
 )
 
-# Create a descriptive label for each combination (matching image format)
+# Create a descriptive label for each combination 
 optimal_combinations$combo_label <- sprintf("λ=%.3f, L=%.3f", 
                                             optimal_combinations$lambda, 
                                             optimal_combinations$L)
@@ -475,18 +474,6 @@ cat("7. Complete_ARL1_Results.csv - All simulation results\n")
 cat("\n=== EXECUTION COMPLETE ===\n")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 ############################# ADDITIONAL PLOTS BASED ON COMPLETE RESULTS #############################
 library(tidyverse)
 library(ggplot2)
@@ -595,7 +582,7 @@ ggsave("ARL1_ConnectedLines_ARL0_500.png", p_500_lines,
        width = 16, height = 8, dpi = 300, bg = "white")
 
 # ------------------------------------------------------------
-# OPTION 2: HEATMAP STYLE WITH VALUES (LIKE ATTACHED IMAGE)
+# OPTION 2: HEATMAP STYLE WITH VALUES 
 # ------------------------------------------------------------
 
 # Function to create heatmap with values for a specific ARL0 target
@@ -668,7 +655,7 @@ ggsave("ARL1_Heatmap_with_Values_ARL0_500.png", p_500_heatmap,
        width = 14, height = 8, dpi = 300, bg = "white")
 
 # ------------------------------------------------------------
-# OPTION 3: COEFFICIENT OF VARIATION PLOT (EXACTLY LIKE 2ND ATTACHMENT)
+# OPTION 3: COEFFICIENT OF VARIATION PLOT
 # ------------------------------------------------------------
 
 # Calculate CV for each shift magnitude and ARL0 target
@@ -782,4 +769,5 @@ cat("7. CV_Summary_Table.csv - Table of CV values for dissertation\n")
 
 # Display the CV table
 cat("\nCoefficient of Variation Summary Table:\n")
+
 print(cv_summary_table)
