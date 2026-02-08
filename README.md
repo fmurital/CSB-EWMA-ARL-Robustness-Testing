@@ -14,3 +14,15 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/yourusername/csb-ewma-arl1-robustness.git
+
+## Install required libraries:
+install.packages(c("parallel", "doParallel", "foreach", "dplyr", "ggplot2", "tidyr"))
+
+
+## Usage
+
+Run the simulation by calling the main function in the main_simulation.R script.
+
+source('main_simulation.R')
+
+This will run the ARL₁ robustness tests across different distributions and generate the results.
