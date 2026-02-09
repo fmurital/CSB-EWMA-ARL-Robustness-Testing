@@ -743,7 +743,7 @@ ggsave("Average_CV_ARL1_Annotated.png", p_cv_annotated,
        width = 10, height = 7, dpi = 300, bg = "white")
 
 # ------------------------------------------------------------
-# CREATE A SUMMARY TABLE FOR THE DISSERTATION
+# CREATE A SUMMARY TABLE
 # ------------------------------------------------------------
 
 # Create a summary table of CV values
@@ -771,3 +771,4 @@ cat("7. CV_Summary_Table.csv - Table of CV values for dissertation\n")
 cat("\nCoefficient of Variation Summary Table:\n")
 
 print(cv_summary_table)
+
