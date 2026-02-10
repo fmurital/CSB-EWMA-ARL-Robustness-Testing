@@ -20,7 +20,7 @@ delta_vec <- c(0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50)
 p0 <- 0.5  # In-control proportion
 k <- 10    # Number of streams
 
-# Define optimal parameter combinations (See https://arxiv.org/pdf/2601.09968)
+# Define optimal parameter combinations 
 optimal_combinations <- data.frame(
   lambda = c(0.175, 0.2, 0.35, 0.4, 0.55, 0.65, 0.725, 0.8, 0.9,
              0.15, 0.2, 0.3, 0.45, 0.525, 0.65, 0.7, 0.85, 0.925),
@@ -132,7 +132,7 @@ simulate_csb_ewma_arl1_robust <- function(lambda, L, distribution, delta,
         cumulative_sum <- cumulative_sum + C_t
         W_t <- (cumulative_sum - mu0 * t) / sqrt(t * sigma2_0)
         r_t <- lambda * W_t + (1 - lambda) * r_previous
-        
+        # (See https://arxiv.org/pdf/2601.09968)
         UCL <- L
         LCL <- -L
         
@@ -771,4 +771,5 @@ cat("7. CV_Summary_Table.csv - Table of CV values for dissertation\n")
 cat("\nCoefficient of Variation Summary Table:\n")
 
 print(cv_summary_table)
+
 
