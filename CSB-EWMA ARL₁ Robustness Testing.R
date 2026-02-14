@@ -101,7 +101,7 @@ dichotomize_data <- function(data, distribution, p0 = 0.5) {
   } else {
     threshold <- quantile(data, p0)
   }
-  
+  #binary_data <- as.integer(data >= threshold) # 1 if above or equal threshold, 0 otherwise
   binary_data <- as.integer(data > threshold)
   return(binary_data)
 }
@@ -771,5 +771,6 @@ cat("7. CV_Summary_Table.csv - Table of CV values for dissertation\n")
 cat("\nCoefficient of Variation Summary Table:\n")
 
 print(cv_summary_table)
+
 
 
